@@ -38,12 +38,4 @@
 
 ---
 
-### 📈 GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=adwaithsuvish&show_icons=true&theme=default" width="48%" />
-</p>
-
----
-
 <p align="center"><i>Last updated: just getting started 🚀</i></p>
