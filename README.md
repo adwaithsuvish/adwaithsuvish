@@ -15,7 +15,7 @@
 ### 🧑‍💻 About Me
 
 - 🎓 Starting 1st year of Computer Science Engineering, specializing in Cyber Security
-- 🔐 Currently learning security fundamentals through TryHackMe
+- 🔐 Currently learning security fundamentals through picoCTFs
 - 💻 Comfortable with basic coding, actively picking up security tools
 - 🌱 Documenting everything I learn as I go — CTF write-ups, notes, and small projects
 - 📫 Open to connecting with anyone else starting out in security
