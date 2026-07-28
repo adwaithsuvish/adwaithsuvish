@@ -34,7 +34,11 @@
 
 ### 📌 Featured Project
 
+**[Port Scanner](https://github.com/adwaithsuvish/port-scanner)** — A multithreaded TCP/UDP port scanner built with Python's `socket` module and `ThreadPoolExecutor`. Scans a target IP or domain across all 65,535 ports and reports open ports to a file. Built to understand how port scanning actually works at the network level.
+ 
 **[Password-Guesser](https://github.com/adwaithsuvish/Password-Guesser)** — A Python tool that generates likely password candidates from personal information (name, dates, etc.), using permutation logic similar to real-world custom wordlist tools. Built to understand how weak, personal-info-based passwords get cracked in the first place.
+ 
+**[Caesar Cipher](https://github.com/adwaithsuvish/caesar-cipher)** — A simple Python implementation of the classic Caesar Cipher substitution technique, built to understand the fundamentals of cryptography.
 
 ---
 
