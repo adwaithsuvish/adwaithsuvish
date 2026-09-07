@@ -40,6 +40,8 @@
  
 **[Caesar Cipher](https://github.com/adwaithsuvish/caesar-cipher)** — A simple Python implementation of the classic Caesar Cipher substitution technique, built to understand the fundamentals of cryptography.
 
+**[Personal Website](https://github.com/adwaithsuvish/personal-website)** — A personal website created using HTML and CSS. This where I showcase my projects and repository.
+
 ---
 
 <p align="center"><i>Last updated: just getting started 🚀</i></p>
