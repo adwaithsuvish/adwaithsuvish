@@ -7,7 +7,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Focus-Cyber%20Security-blue?style=flat-square" />
   <img src="https://img.shields.io/badge/Status-1st%20Year%20Engineering-orange?style=flat-square" />
-  <img src="https://img.shields.io/badge/Learning-TryHackMe-red?style=flat-square" />
 </p>
 
 ---
