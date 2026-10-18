@@ -17,5 +17,5 @@ jobs:
         with:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
           # Points the action at Hackatime instead of wakatime.com
-          API_BASE_URL: https://hackatime.hackclub.com/api/hackatime
+          API_BASE_URL: https://hackatime.hackclub.com/api/hackatime/v1
           SHOW_TITLE: true
