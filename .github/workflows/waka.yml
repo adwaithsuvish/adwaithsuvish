@@ -2,20 +2,21 @@ name: Hackatime Readme
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # runs once a day at 00:00 UTC
-  workflow_dispatch:       # lets you run it manually from the Actions tab
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 permissions:
-  contents: write          # needed so the action can commit the updated README
+  contents: write
 
 jobs:
   update-readme:
     name: Update README with Hackatime stats
     runs-on: ubuntu-latest
+
     steps:
-      - uses: athul/waka-readme@master
+      - name: Update README
+        uses: athul/waka-readme@master
         with:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-          # Points the action at Hackatime instead of wakatime.com
           API_BASE_URL: https://hackatime.hackclub.com/api/hackatime/v1
-          SHOW_TITLE: true
+          SHOW_TITLE: "true"
