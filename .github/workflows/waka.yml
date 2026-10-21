@@ -19,4 +19,5 @@ jobs:
         with:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
           API_BASE_URL: https://hakatime.mtx-dev.xyz/api
+          TIME_RANGE: all_time
           SHOW_TITLE: "true"
