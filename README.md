@@ -46,6 +46,14 @@
 ### ⏱️ Coding Activity
 
 <!--START_SECTION:waka-->
+**Total Coding Time (Last 7 Days):** 0 hrs 54 mins
+
+
+- **Python**: 0 hrs 31 mins (55.15%)
+- **YAML**: 0 hrs 7 mins (13.41%)
+- **Markdown**: 0 hrs 6 mins (11.65%)
+- **JavaScript**: 0 hrs 4 mins (6.9%)
+- **CSS**: 0 hrs 3 mins (5.47%)
 <!--END_SECTION:waka-->
 
 ---
