@@ -19,36 +19,54 @@ jobs:
 
       - name: Fetch Stats and Update README
         env:
-          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          WAKATIME_API_KEY: \${{ secrets.WAKATIME_API_KEY }}
         run: |
-          # Fetch JSON stats from Hackatime API
+          # Fetch ALL-TIME stats from Hackatime API endpoint
           RESPONSE=$(curl -s -H "Authorization: Bearer $WAKATIME_API_KEY" \
-            https://hackatime.hackclub.com/api/hackatime/v1/users/current/stats/last_7_days)
+            https://hackatime.hackclub.com/api/hackatime/v1/users/current/stats/all_time)
 
-          # Parse total time and top languages using python
           python3 -c "
           import json, sys
 
-          data = json.loads('''$RESPONSE''')
+          data = json.loads('''\$RESPONSE''')
           if 'data' not in data:
               print('Failed to fetch data or invalid response')
               sys.exit(1)
 
           stats = data['data']
           total_text = stats.get('human_readable_total', '0 hrs')
+          daily_avg = stats.get('human_readable_daily_average', '0 mins')
           languages = stats.get('languages', [])
 
-          # Build markdown content
-          lines = [f'**Total Coding Time (Last 7 Days):** {total_text}\n\n']
-          for lang in languages[:5]: # Top 5 languages
-              name = lang.get('name')
+          # Build header stats block
+          lines = []
+          lines.append(f'```text')
+          lines.append(f'⏱️  Total Coding Time: {total_text}')
+          lines.append(f'📅  Daily Average:   {daily_avg}')
+          lines.append(f'```\n')
+
+          lines.append('#### 📊 Top Languages Breakdown\n')
+          lines.append('```text')
+          
+          # Generate Visual Progress Bars (100% = 20 blocks)
+          max_len = max([len(l.get('name', '')) for l in languages[:7]], default=10)
+          
+          for lang in languages[:7]: # Top 7 languages
+              name = lang.get('name', 'Unknown').ljust(max_len)
               percent = lang.get('percent', 0)
-              text = lang.get('text', '')
-              lines.append(f'- **{name}**: {text} ({percent}%)')
+              text = lang.get('text', '').rjust(10)
+              
+              # Calculate progress bar length (20 chars max)
+              filled_len = int(round(20 * percent / 100))
+              bar = '█' * filled_len + '░' * (20 - filled_len)
+              
+              lines.append(f'{name}  [{bar}]  {percent:>5.1f}%  ({text})')
+          
+          lines.append('```')
 
           content = '\n'.join(lines)
 
-          # Update README between markers
+          # Insert into README.md between tags
           with open('README.md', 'r') as f:
               readme = f.read()
 
@@ -58,11 +76,11 @@ jobs:
           if start_tag in readme and end_tag in readme:
               start_idx = readme.find(start_tag) + len(start_tag)
               end_idx = readme.find(end_tag)
-              new_readme = readme[:start_idx] + '\n' + content + '\n' + readme[end_idx:]
+              new_readme = readme[:start_idx] + '\n\n' + content + '\n\n' + readme[end_idx:]
 
               with open('README.md', 'w') as f:
                   f.write(new_readme)
-              print('README updated successfully!')
+              print('README updated with graph bars successfully!')
           else:
               print('Markers not found in README.md')
               sys.exit(1)
@@ -73,4 +91,4 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Hackatime stats in README" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Hackatime all-time stats graphs in README" && git push)
