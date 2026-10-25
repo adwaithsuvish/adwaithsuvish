@@ -1,4 +1,4 @@
-name: Hackatime Readme
+name: Update Hackatime Stats
 
 on:
   schedule:
@@ -10,13 +10,16 @@ permissions:
 
 jobs:
   update-readme:
-    name: Update README with Hackatime stats
     runs-on: ubuntu-latest
-
     steps:
-      - name: Update README
-        uses: athul/waka-readme@master
-        with:
-          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-          API_BASE_URL: https://hakatime.mtx-dev.xyz/api
-          SHOW_TITLE: "true"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch Hackatime Stats
+        run: |
+          # Fetch stats from Hackatime's compatible endpoint
+          RESPONSE=$(curl -s -H "Authorization: Bearer ${{ secrets.WAKATIME_API_KEY }}" \
+            https://hackatime.hackclub.com/api/hackatime/v1/users/current/stats/last_7_days)
+          
+          echo "API Response: $RESPONSE"
+          # (You can parse or format this into your README markers)
