@@ -1,4 +1,4 @@
-name: Hackatime README Update
+name: Hackatime Readme
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  no-op:
+  check-status:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Using dynamic SVG badges for profile stats!"
+      - run: echo "Using dynamic Hackatime SVG badges for @adwaithsuvish!"
