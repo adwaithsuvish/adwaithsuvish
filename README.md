@@ -43,17 +43,16 @@
 
 ---
 
-### ⏱️ Coding Activity
-
 <!--START_SECTION:waka-->
-**Total Coding Time (Last 7 Days):** 0 hrs 54 mins
 
+### ⏱️ My Coding Activity
 
-- **Python**: 0 hrs 31 mins (55.15%)
-- **YAML**: 0 hrs 7 mins (13.41%)
-- **Markdown**: 0 hrs 6 mins (11.65%)
-- **JavaScript**: 0 hrs 4 mins (6.9%)
-- **CSS**: 0 hrs 3 mins (5.47%)
+<!-- All-Time Language Pie Chart & Stats Card -->
+[![WakaTime Stats](https://github-readme-stats.vercel.app/api/wakatime?username=adwaithsuvish&theme=radical&layout=compact&langs_count=8)](https://github.com/adwaithsuvish)
+
+<!-- Overall Coding Time Badge -->
+[![WakaTime Time Badge](https://wakatime.com/badge/user/adwaithsuvish.svg)](https://wakatime.com/@adwaithsuvish)
+
 <!--END_SECTION:waka-->
 
 ---
