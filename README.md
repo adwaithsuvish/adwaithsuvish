@@ -47,11 +47,9 @@
 
 ### ⏱️ My Coding Activity
 
-<!-- Hackatime Compact Stats Card / Badge -->
-[![Hackatime Stats](https://hackatime.hackclub.com/api/hackatime/v1/users/adwaithsuvish/stats/badge.svg)](https://hackati.me/adwaithsuvish)
+[![WakaTime Stats](https://github-readme-stats.vercel.app/api/wakatime?username=adwaithsuvish&api_base=https://hackatime.hackclub.com/api/hackatime/v1&theme=radical&layout=compact)](https://hackati.me/adwaithsuvish)
 
-<!-- Detailed Profile Link -->
-[![View Hackatime Profile](https://img.shields.io/badge/Hackatime-View%20Full%20Profile-ec3750?style=for-the-badge&logo=clock)](https://hackati.me/adwaithsuvish)
+[![View Full Profile](https://img.shields.io/badge/Hackatime-View%20Profile-ec3750?style=for-the-badge&logo=clock)](https://hackati.me/adwaithsuvish)
 
 <!--END_SECTION:waka-->
 
