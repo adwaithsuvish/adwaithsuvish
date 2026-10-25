@@ -47,11 +47,11 @@
 
 ### ⏱️ My Coding Activity
 
-<!-- All-Time Language Pie Chart & Stats Card -->
-[![WakaTime Stats](https://github-readme-stats.vercel.app/api/wakatime?username=adwaithsuvish&theme=radical&layout=compact&langs_count=8)](https://github.com/adwaithsuvish)
+<!-- Hackatime Compact Stats Card / Badge -->
+[![Hackatime Stats](https://hackatime.hackclub.com/api/hackatime/v1/users/adwaithsuvish/stats/badge.svg)](https://hackati.me/adwaithsuvish)
 
-<!-- Overall Coding Time Badge -->
-[![WakaTime Time Badge](https://wakatime.com/badge/user/adwaithsuvish.svg)](https://wakatime.com/@adwaithsuvish)
+<!-- Detailed Profile Link -->
+[![View Hackatime Profile](https://img.shields.io/badge/Hackatime-View%20Full%20Profile-ec3750?style=for-the-badge&logo=clock)](https://hackati.me/adwaithsuvish)
 
 <!--END_SECTION:waka-->
 
