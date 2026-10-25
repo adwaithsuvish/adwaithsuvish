@@ -50,4 +50,3 @@
 
 ---
 
-<p align="center"><i>Last updated: just getting started 🚀</i></p>
