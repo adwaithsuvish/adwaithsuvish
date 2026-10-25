@@ -1,4 +1,4 @@
-name: Update Hackatime Stats
+name: Hackatime Readme
 
 on:
   schedule:
@@ -10,16 +10,67 @@ permissions:
 
 jobs:
   update-readme:
+    name: Update README with Hackatime stats
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Fetch Hackatime Stats
+      - name: Fetch Stats and Update README
+        env:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
         run: |
-          # Fetch stats from Hackatime's compatible endpoint
-          RESPONSE=$(curl -s -H "Authorization: Bearer ${{ secrets.WAKATIME_API_KEY }}" \
+          # Fetch JSON stats from Hackatime API
+          RESPONSE=$(curl -s -H "Authorization: Bearer $WAKATIME_API_KEY" \
             https://hackatime.hackclub.com/api/hackatime/v1/users/current/stats/last_7_days)
-          
-          echo "API Response: $RESPONSE"
-          # (You can parse or format this into your README markers)
+
+          # Parse total time and top languages using python
+          python3 -c "
+          import json, sys
+
+          data = json.loads('''$RESPONSE''')
+          if 'data' not in data:
+              print('Failed to fetch data or invalid response')
+              sys.exit(1)
+
+          stats = data['data']
+          total_text = stats.get('human_readable_total', '0 hrs')
+          languages = stats.get('languages', [])
+
+          # Build markdown content
+          lines = [f'**Total Coding Time (Last 7 Days):** {total_text}\n\n']
+          for lang in languages[:5]: # Top 5 languages
+              name = lang.get('name')
+              percent = lang.get('percent', 0)
+              text = lang.get('text', '')
+              lines.append(f'- **{name}**: {text} ({percent}%)')
+
+          content = '\n'.join(lines)
+
+          # Update README between markers
+          with open('README.md', 'r') as f:
+              readme = f.read()
+
+          start_tag = '<!--START_SECTION:waka-->'
+          end_tag = '<!--END_SECTION:waka-->'
+
+          if start_tag in readme and end_tag in readme:
+              start_idx = readme.find(start_tag) + len(start_tag)
+              end_idx = readme.find(end_tag)
+              new_readme = readme[:start_idx] + '\n' + content + '\n' + readme[end_idx:]
+
+              with open('README.md', 'w') as f:
+                  f.write(new_readme)
+              print('README updated successfully!')
+          else:
+              print('Markers not found in README.md')
+              sys.exit(1)
+          "
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Hackatime stats in README" && git push)
